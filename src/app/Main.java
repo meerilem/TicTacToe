@@ -1,15 +1,12 @@
 package app;
 
+import app.components.ApplicationFrame;
+import app.components.TicTacToe;
+
 public class Main {
 
     public static void main(String[] args) {
-
-      //Schedule a job for the event-dispatching thread:
-      //creating and showing this application's app.GUI.
-      javax.swing.SwingUtilities.invokeLater(new Runnable() {
-        public void run() {
-          GUI.createAndShowGUI();
-        }
-      });
+        TicTacToe ticTacToe = new TicTacToe();
+        new ApplicationFrame(ticTacToe.component());
     }
 }
