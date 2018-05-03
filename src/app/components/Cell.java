@@ -8,6 +8,7 @@ import javax.swing.JButton;
 public class Cell {
 
   AbstractButton component;
+  State state = State.EMPTY;
 
   public Cell() {
     component = new JButton();
@@ -19,17 +20,23 @@ public class Cell {
     return component;
   }
 
-  public void makeMove(Player player) {
-    component.setText(player.name());
+  public void makeMove(State state) {
+    component.setText(state.name());
     component.setEnabled(false);
+    this.state = state;
+
   }
 
   public void onClick(Runnable action) {
     component.addActionListener(e -> action.run());
   }
 
-  public enum Player {
-    X, O
+  public State state() {
+    return state;
+  }
+
+  public enum State {
+    X, O, EMPTY
   }
 
 }

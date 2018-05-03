@@ -1,15 +1,10 @@
 package app.components;
 
 
-import app.components.Cell;
-import app.components.Grid;
-
-import javax.swing.*;
-
 import java.awt.*;
 
-import static app.components.Cell.Player.O;
-import static app.components.Cell.Player.X;
+import static app.components.Cell.State.O;
+import static app.components.Cell.State.X;
 
 public class TicTacToe {
 
@@ -22,15 +17,11 @@ public class TicTacToe {
   }
 
   private void addCellsToGrid() {
-    createCell(0, 0);
-    createCell(0, 1);
-    createCell(0, 2);
-    createCell(1, 0);
-    createCell(1, 1);
-    createCell(1, 2);
-    createCell(2, 0);
-    createCell(2, 1);
-    createCell(2, 2);
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++) {
+        createCell(i, j);
+      }
+    }
   }
 
   private void createCell(int x, int y) {
@@ -40,7 +31,12 @@ public class TicTacToe {
       if (movesMade % 2 == 0) cell.makeMove(X);
       else cell.makeMove(O);
       movesMade++;
+      checkForGameEnd();
     });
+  }
+
+  private void checkForGameEnd() {
+    grid.cell(0, 0).state(); // TODO
   }
 
   public Container component() {
