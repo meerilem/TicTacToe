@@ -17,17 +17,15 @@ public class Grid {
         return component;
     }
 
-    public void addCell(Cell cell, int x, int y) {
+    public void addCell(Cell cell, Position position) {
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = x;
-        constraints.gridy = y;
+        constraints.gridx = position.x;
+        constraints.gridy = position.y;
         component.add(cell.component(), constraints);
-        Position position = new Position(x, y);
         cells.put(position, cell);
     }
 
-    public Cell cell(int x, int y) {
-        Position position = new Position(x, y);
+    public Cell cell(Position position) {
         return cells.get(position);
     }
 }

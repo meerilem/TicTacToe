@@ -19,14 +19,14 @@ public class TicTacToe {
   private void addCellsToGrid() {
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        createCell(i, j);
+        createCell(new Position(i, j));
       }
     }
   }
 
-  private void createCell(int x, int y) {
+  private void createCell(Position position) {
     Cell cell = new Cell();
-    grid.addCell(cell, x, y);
+    grid.addCell(cell, position);
     cell.onClick(() -> {
       if (movesMade % 2 == 0) cell.makeMove(X);
       else cell.makeMove(O);
@@ -36,7 +36,7 @@ public class TicTacToe {
   }
 
   private void checkForGameEnd() {
-    grid.cell(0, 0).state(); // TODO
+    grid.cell(new Position(0, 0)).state(); // TODO
   }
 
   public Container component() {
